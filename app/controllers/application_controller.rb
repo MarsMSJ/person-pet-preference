@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-    def hello
+    def PPP_Welcome
         render html: "Person Pet Preference"
     end        
 end
