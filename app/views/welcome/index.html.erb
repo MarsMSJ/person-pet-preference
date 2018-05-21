@@ -16,14 +16,18 @@ p {
     I would like to guess whether you’re a dog or cat person based on your height and weight. 
 <p>
     </div>
+
+   
 </div>
 
 <div class="text-center">
+ 
+
 <h2>Would you like to participate?</h2>
 </div>
 <div class="row">
-    <div class="col-md-2 col-md-offset-4">
-        <button type="button" class="btn btn-info btn-circle btn-lg btn-block"><i>Lets do it!</i></button>
+    <div class="col-md-2 col-md-offset-4">      
+        <%= link_to 'Lets do it!', dataentry_path, :class => "btn btn-info btn-circle btn-lg btn-block"%>
     </div>
     <div class="col-md-2">
         <button type="button" class="btn btn-warning btn-circle btn-lg btn-block"

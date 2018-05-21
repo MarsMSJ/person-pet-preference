@@ -1,0 +1,2 @@
+class PersonPetExperiment < ApplicationRecord
+end
