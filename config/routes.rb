@@ -7,6 +7,5 @@ Rails.application.routes.draw do
   get '/show', to: 'person_pet_experiment#show'
   
   get '/welcome', to: 'welcome#index'
-  #get '/stats', to: 'stats#index'
-  #
+  get '/stats', to: 'stats#index'
 end
