@@ -1,0 +1,25 @@
+
+ 
+ <div class="row">
+ <div class="col-md-5 col-md-offset-2">
+ <h1>Person Pet Experiment Stats</h1>
+ <h4>Shows all guess and if they were right.</h4>
+<table align="center">
+ <col width="20">
+ <col width="50">
+ <col width="50">
+  
+ <tr >
+    <th >#</th>
+    <th >Height</th>
+    <th >Weight</th>
+  </tr>
+  <% @ppe.each do |ppe| %>
+    <tr>
+      <td ><%= ppe.id %></td>
+      <td ><%= ppe.height %></td>
+      <td ><%= ppe.weight %></td>
+    </tr>
+  <% end %>
+</table>
+</div></div>

@@ -16,7 +16,8 @@ class PersonPetExperimentController < ApplicationController
     end
 
     def show
-        @person_pet_experiment = PersonPetExperiment.first
+        @person_pet_experiment = 
+            PersonPetExperiment.find([:id])
         @person_pet_experiment.pet_kind = pet_kind(@person_pet_experiment)
     end
 
@@ -24,9 +25,10 @@ class PersonPetExperimentController < ApplicationController
         @person_pet_experiment = PersonPetExperiment.new(person_pet_experiment_params)
 
        #Simple chance for now
-        @person_pet_experiment.guess = rand(1)
+        @person_pet_experiment.guess = rand() % 2
         @person_pet_experiment.save
-        redirect_to show_path(@person_pet_experiment.id)
+        redirect_to show_path( id => @person_pet_experiment.id)
+        #redirect_to show_path(@person_pet_experiment.id)
     end
 
     private 
