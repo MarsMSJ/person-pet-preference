@@ -1,13 +1,13 @@
-<% provide(:title, 'Data Entry') %>
+<% provide(:title, 'PPE') %>
 <div class="row text-center">
 <h2>We need some data first...</h2>
 </div>
-<%= form_with scope: :data, local: true do |form| %>
+<%= form_for :person_pet_experiment, url:ppe_path, local: true do |form| %>
     <div class="row">
     </div>
     <div class="row">
             <div class="text-center" >
-            <h3>Select Units</h3><br>
+            <h3>Select Units</h3>
             </div>
         <div class="text-center">
            <select name = "post[units]">
@@ -28,8 +28,21 @@
             
             <%= form.number_field(:weight, step: :any) %>
         </div>
+        
     </div>
+    
 
+    <div class="row">
+    <br><br>
+    <div class="col-md-2 col-md-offset-4">      
+        <%= form.submit "Lets Go!", :class => "btn btn-info btn-circle btn-lg btn-block" %>
+    </div>
+    <div class="col-md-2">
+        <button type="button" class="btn btn-warning btn-circle btn-lg btn-block"
+        onclick="location.href = 'https://en.wikipedia.org/wiki/Flower';">
+            <i>Nevermind!</i></button>
+    </div>  
+</div>
 <% end %>
  
 
