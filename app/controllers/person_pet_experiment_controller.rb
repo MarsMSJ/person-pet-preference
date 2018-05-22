@@ -64,9 +64,12 @@ class PersonPetExperimentController < ApplicationController
         avg = (high + low) / 2
         avg = avg > 0 ? avg : 1
         percentDiff = (diff/avg) * 100
-        
-        if diff == 0 || percentDiff < 5            
-            @ppe.guess = rand(1)#Just a bad random guess
+       
+        if diff == 0 || percentDiff < 5        
+            # Dice Roll    
+            catsWin = SecureRandom.random_number(10)
+            dogsWin = SecureRandom.random_number(10)
+            @ppe.guess = catsWin > dogsWin ? 0 : 1 #Just a bad random guess
         else
             #Guess based on the more popular result            
             @ppe.guess = catLoverCount > dogLoverCount ? 0 : 1
