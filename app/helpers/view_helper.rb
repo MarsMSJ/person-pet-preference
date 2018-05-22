@@ -8,12 +8,28 @@ module ViewHelper
     end 
 
     def guess_result(ppe)
-        if !ppe.pass 
-            return "Incomplete"
-        elseif ppe.pass == 1
-            return "Correct"
-        else 
-            return "Wrong"
+        #Missing value - Error
+        if ppe.pass.nil?
+            return "Error"
         end
+
+        if ppe.pass
+            return "Correct" 
+        else 
+            return "Wrong"            
+        end 
+    end
+
+    def guess_validation(ppe)
+         #Missing value - Error
+        if ppe.pass.nil?
+            return "Sorry, something went wrong... :(" 
+        end
+
+        if ppe.pass
+            return "We got it right?! YAY!"
+        else 
+            return "Oops! I'll work on that!"       
+        end 
     end
 end

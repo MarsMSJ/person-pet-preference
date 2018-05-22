@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-md-4 col-md-offset-4 text-center">
+        <h2><%= guess_validation(@ppe) %></h2>
+        <br><br>
+    </div>
+</div>
+
+</div>
+
+
+<div class="row">
+    <br><br>
+    <div class="col-md-2 col-md-offset-4">      
+        <%= link_to "View Stats", stats_path, :class => "btn btn-info btn-circle btn-lg btn-block" %>
+    </div>
+    
+    <div class="col-md-2">
+        <%= link_to "Goodbye!", {
+            :controller => "person_pet_experiment", 
+            :action => "goodbye", 
+            :id => @ppe.id},
+            :class=> "btn btn-warning btn-circle btn-lg btn-block"%>
+    </div>  
+</div>
