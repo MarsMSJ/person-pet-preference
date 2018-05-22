@@ -40,9 +40,7 @@ class PersonPetExperimentController < ApplicationController
 
     def create
         @ppe = PersonPetExperiment.new(ppe_params)
-       #Simple chance for now
-        @ppe.guess = rand() % 2
-
+    
         #Guess
 
         # Count the number of people (h*w) that prefer dogs
@@ -64,13 +62,11 @@ class PersonPetExperimentController < ApplicationController
         high  = catLoverCount > dogLoverCount ? dogLoverCount : catLoverCount
         diff = high - low
         diffPercent = ( diff / low ) * 100
-        puts( catLoverCount, dogLoverCount )
-        if diff == 0 || diff < 2
-            puts("Random Guess", diff)
+        
+        if diff == 0 || diff < 2            
             @ppe.guess = rand() % 2 #Just a bad random guess
         else
-            #Guess based on the more popular result
-            puts("Majority Guess")
+            #Guess based on the more popular result            
             @ppe.guess = catLoverCount > dogLoverCount ? 0 : 1
         end
         
