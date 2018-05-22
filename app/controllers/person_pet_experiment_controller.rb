@@ -66,7 +66,7 @@ class PersonPetExperimentController < ApplicationController
         percentDiff = (diff/avg) * 100
         
         if diff == 0 || percentDiff < 5            
-            @ppe.guess = rand() % 2 #Just a bad random guess
+            @ppe.guess = rand(1)#Just a bad random guess
         else
             #Guess based on the more popular result            
             @ppe.guess = catLoverCount > dogLoverCount ? 0 : 1
