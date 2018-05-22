@@ -2,23 +2,32 @@
  
  <div class="row">
  <div class="col-md-5 col-md-offset-2">
- <h1>Person Pet Experiment Stats</h1>
- <h4>Shows all guess and if they were right.</h4>
-<table align="center">
+ <h1 align="center">Person Pet Experiment Stats</h1>
+ <h4 align="center">PPE Records </h4>
+<table>
  <col width="20">
- <col width="50">
- <col width="50">
+ <col width="20">
+ <col width="100">
+ <col width="100">
+ <col width="100">
+ <col width="100">
   
  <tr >
+    <th></th>
     <th >#</th>
     <th >Height</th>
     <th >Weight</th>
+    <th >Guess</th>
+    <th >Correct</th>
   </tr>
   <% @ppe.each do |ppe| %>
     <tr>
+    <td />
       <td ><%= ppe.id %></td>
       <td ><%= ppe.height %></td>
       <td ><%= ppe.weight %></td>
+      <td ><%= pet_kind(ppe) %></td>
+      <td ><%= guess_result(ppe) %></td>
     </tr>
   <% end %>
 </table>

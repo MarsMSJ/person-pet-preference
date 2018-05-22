@@ -6,4 +6,14 @@ module ViewHelper
             return "Dog"
         end
     end 
+
+    def guess_result(ppe)
+        if !ppe.pass 
+            return "Incomplete"
+        elseif ppe.pass == 1
+            return "Correct"
+        else 
+            return "Wrong"
+        end
+    end
 end
