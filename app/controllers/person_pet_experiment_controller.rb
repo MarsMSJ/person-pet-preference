@@ -62,7 +62,7 @@ class PersonPetExperimentController < ApplicationController
         high  = catLoverCount > dogLoverCount ? dogLoverCount : catLoverCount
         diff = high - low
         avg = (high + low) / 2
-        percentDiff = (diff/ave) * 100
+        percentDiff = (diff/avg) * 100
         
         if diff == 0 || percentDiff < 5            
             @ppe.guess = rand() % 2 #Just a bad random guess
