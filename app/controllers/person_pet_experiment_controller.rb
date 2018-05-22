@@ -46,16 +46,16 @@ class PersonPetExperimentController < ApplicationController
         # Count the number of people (h*w) that prefer dogs
         
         # System guess correctly the person prefers dogs        
-        dogLoverCount = PersonPetExperiment.count("guess = 1 AND pass = 1")
+        dogLoverCount = PersonPetExperiment.count("guess = 1 AND pass = true")
        
         # System guess incorrectly that the person prefers cats
-        dogLoverCount+= PersonPetExperiment.count("guess = 0 AND pass = 0" )
+        dogLoverCount+= PersonPetExperiment.count("guess = 0 AND pass = false" )
         
          # System guess correctly the person prefers cats
-        catLoverCount = PersonPetExperiment.count("guess = 0 AND pass = 1")
+        catLoverCount = PersonPetExperiment.count("guess = 0 AND pass = true")
        
         # System guess incorrectly that the person prefers dogs
-        catLoverCount+= PersonPetExperiment.count("guess = 1 AND pass = 0")
+        catLoverCount+= PersonPetExperiment.count("guess = 1 AND pass = false")
         
         #Compute % difference from lowest to highest
         low  = catLoverCount > dogLoverCount ? catLoverCount : dogLoverCount
