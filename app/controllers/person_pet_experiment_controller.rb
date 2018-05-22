@@ -62,6 +62,7 @@ class PersonPetExperimentController < ApplicationController
         high  = catLoverCount > dogLoverCount ? dogLoverCount : catLoverCount
         diff = high - low
         avg = (high + low) / 2
+        avg = avg > 0 ? avg : 1
         percentDiff = (diff/avg) * 100
         
         if diff == 0 || percentDiff < 5            
