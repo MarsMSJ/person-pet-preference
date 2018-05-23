@@ -50,3 +50,9 @@
 
 ### Complex Guess
 &nbsp;&nbsp;&nbsp;&nbsp;The complex guess uses data from the database. I get the total number of cat lovers and total number of dog lovers for a given height and weight. If the difference between those numbers is less than 5%, I use a simple guess. Otherwise the majority is the guess I take. For example if there are more dog lovers than cat lovers for a particular height and weight, I guess dog lover and vice versa. 
+
+
+## The "Goodbye!" button
+
+&nbsp;&nbsp;&nbsp;&nbsp;If the system determines you're a dog person whether through an incorrect or correct guess, the "Goodbye!" button takes you to the kittens Wikipedia page and vice versa. I thought it would be fun and "why not both?"
+
