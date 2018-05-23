@@ -9,15 +9,22 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;I used the following:
 
+### Tools
 - [Homebrew](https://Brew.sh/) 
 - Git
 - MacOS
 - Visual Studio Code
 - Google Chrome (Dev Mode)
+
+### Resources
 - [RailsTutorial](https://RailsTutorial.org/) 
 - [Heroku Dev Center](https://devcenter.heroku.com/) 
+- [Ruby-Doc.org](https://Ruby-Doc.org/) 
+- [TutorialsPoint](https://www.tutorialspoint.com/ruby/)
+- [Omni Calculator: Percentage Difference](https://www.omnicalculator.com/math/percentage-difference)
 ... 
 - [Google](https://www.google.com/) 
+
 
 ## Requirements
 - Git
