@@ -1,5 +1,6 @@
 class PersonPetExperimentController < ApplicationController
    include ViewHelper
+   include GuessHelper
 
     def new
         @ppe = PersonPetExperiment.new
@@ -39,42 +40,8 @@ class PersonPetExperimentController < ApplicationController
     end
 
     def create
-        @ppe = PersonPetExperiment.new(ppe_params)
-    
-        #Guess
-
-        # Count the number of people (h*w) that prefer dogs
-        
-        # System guess correctly the person prefers dogs        
-        dogLoverCount = PersonPetExperiment.count("guess = 1 AND pass = true")
-       
-        # System guess incorrectly that the person prefers cats
-        dogLoverCount+= PersonPetExperiment.count("guess = 0 AND pass = false" )
-        
-         # System guess correctly the person prefers cats
-        catLoverCount = PersonPetExperiment.count("guess = 0 AND pass = true")
-       
-        # System guess incorrectly that the person prefers dogs
-        catLoverCount+= PersonPetExperiment.count("guess = 1 AND pass = false")
-        
-        #Compute % difference from lowest to highest
-        low  = catLoverCount > dogLoverCount ? catLoverCount : dogLoverCount
-        high  = catLoverCount > dogLoverCount ? dogLoverCount : catLoverCount
-        diff = high - low
-        avg = (high + low) / 2
-        avg = avg > 0 ? avg : 1
-        percentDiff = (diff/avg) * 100
-       
-        if diff == 0 || percentDiff < 5        
-            # Dice Roll    
-            catsWin = SecureRandom.random_number(10)
-            dogsWin = SecureRandom.random_number(10)
-            @ppe.guess = catsWin > dogsWin ? 0 : 1 #Just a bad random guess
-        else
-            #Guess based on the more popular result            
-            @ppe.guess = catLoverCount > dogLoverCount ? 0 : 1
-        end
-        
+        @ppe = PersonPetExperiment.new(ppe_params)    
+        @ppe.guess = takeGuess
         @ppe.save
         # This works according to ruby doc
         redirect_to action: "show", id: @ppe.id
