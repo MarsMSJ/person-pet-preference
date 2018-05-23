@@ -41,7 +41,7 @@ class PersonPetExperimentController < ApplicationController
 
     def create
         @ppe = PersonPetExperiment.new(ppe_params)    
-        @ppe.guess = takeGuess
+        @ppe.guess = takeGuess(@ppe.height, @ppe.weight)
         @ppe.save
         # This works according to ruby doc
         redirect_to action: "show", id: @ppe.id

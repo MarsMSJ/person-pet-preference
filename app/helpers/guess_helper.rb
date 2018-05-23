@@ -2,7 +2,7 @@ module GuessHelper
     # Constants
     cat = 0
     dog = 1
-
+    #filters
     # System guess incorrectly that the person prefers dogs
     MislabeledCatLovers = "guess = 1 AND pass = false"
 
@@ -16,15 +16,22 @@ module GuessHelper
     MislabeledDogLovers = "guess = 0 AND pass = false" 
 
     # Query the number of Dog Lovers
-    define_method :queryDogLovers do
-        return PersonPetExperiment.count( SpottedDogLovers ) +
-        PersonPetExperiment.count( MislabeledDogLovers )
+    
+    def generalQuery( subQueryA, subQueryB )
+        return PersonPetExperiment.count( subQueryA ) + PersonPetExperiment.count( subQueryB )
+    end
+
+    define_method :queryDogLovers do |filterHeightWeight|
+        filterSpotted = SpottedDogLovers + filterHeightWeight
+        filterMislabeled = MislabeledDogLovers + filterHeightWeight
+        return generalQuery( filterMislabeled, filterSpotted )      
     end
 
     # Query the number of Cat Lovers
-    define_method :queryCatLovers do
-        return PersonPetExperiment.count( SpottedCatLovers ) +
-        PersonPetExperiment.count( MislabeledCatLovers )
+    define_method :queryCatLovers do |filterHeightWeight|           
+        filterSpotted = SpottedCatLovers + filterHeightWeight
+        filterMislabeled = MislabeledCatLovers + filterHeightWeight
+        return generalQuery( filterMislabeled, filterSpotted ) 
     end
 
     def computePercentDifference( numA, numB )
@@ -46,15 +53,13 @@ module GuessHelper
         return catsWin > dogsWin ? cat : dog
     end
 
-    
-
     # Complicated Guess
-    define_method :complexGuess do
-        catLoverTotal = queryCatLovers
-        dogLoverTotal = queryDogLovers
+    define_method :complexGuess do |filterHeightWeight|
+        catLoverTotal = queryCatLovers(filterHeightWeight)
+        dogLoverTotal = queryDogLovers(filterHeightWeight)
         percentDiff = computePercentDifference(catLoverTotal, dogLoverTotal)
         
-        if percentDiff < 0.5
+        if percentDiff < 0.05
             return simpleGuess
         else
             puts( "cat lover total: ", catLoverTotal)
@@ -64,9 +69,11 @@ module GuessHelper
     end
 
     # Guess 
-    def takeGuess
-        if isThereEnoughDataToGuess          
-            return complexGuess
+    def takeGuess(height, weight)
+        if isThereEnoughDataToGuess  
+            #Create filter for height and weight
+            filterHeightWeight = " AND height = " + height.to_s + " AND weight = " + weight.to_s        
+            return complexGuess(filterHeightWeight)
         else
             return simpleGuess
         end
